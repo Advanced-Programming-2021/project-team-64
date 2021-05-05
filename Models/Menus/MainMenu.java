@@ -1,4 +1,10 @@
 package Models.Menus;
 
-public class MainMenu {
+public class MainMenu extends Models.Model {
+
+
+    public void logout() {
+        currentUser = null;
+        return;
+    }
 }
