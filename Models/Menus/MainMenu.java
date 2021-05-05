@@ -1,8 +1,8 @@
 package Models.Menus;
 
-public class MainMenu extends Models.Model {
+import Models.*;
 
-
+public class MainMenu extends Model {
     public void logout() {
         currentUser = null;
         return;
