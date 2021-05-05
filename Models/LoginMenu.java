@@ -8,7 +8,7 @@ public class LoginMenu extends Model {
             return "user with nickname " + nickname + "already exists";
         } else {
             addUser(username, nickname, password);
-            currentUser = getUser(username, password);
+            currentUser = getUser(username);
             return "user created successfully!";
         }
     }
@@ -17,7 +17,7 @@ public class LoginMenu extends Model {
         if (!(existsUser(username)) || !(matchPassword(username, password))) {
             return "Username and password didn’t match!";
         } else {
-            currentUser = getUser(username, password);
+            currentUser = getUser(username);
             return "user logged in successfully!";
         }
     }
