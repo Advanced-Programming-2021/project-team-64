@@ -8,6 +8,7 @@ public class LoginMenu extends Model {
             return "user with nickname " + nickname + "already exists";
         } else {
             addUser(username, nickname, password);
+            currentUser = getUser(username, password);
             return "user created successfully!";
         }
     }
