@@ -1,9 +1,10 @@
 package Models.Menus;
 
 import Models.*;
+
 import java.util.ArrayList;
 
-public class Scoreboard extends Model{
+public class Scoreboard extends Model {
     public ArrayList<User> showScoreboard() {
         int n = allUsers.size();
 
