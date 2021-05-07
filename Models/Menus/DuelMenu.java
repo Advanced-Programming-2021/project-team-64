@@ -1,4 +1,4 @@
 package Models.Menus;
 
-public class DuelMenu {
+public class DuelMenu extends Menu {
 }

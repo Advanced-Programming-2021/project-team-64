@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
 
-public class Scoreboard extends Model {
+public class Scoreboard extends Menu {
     public ArrayList<User> showScoreboard() {
         ArrayList<User> ranking = User.getUsers();
         Collections.sort(ranking, Comparator.comparing(User::getScore));

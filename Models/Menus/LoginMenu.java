@@ -1,23 +1,25 @@
-package Models;
+package Models.Menus;
 
-public class LoginMenu extends Model {
+import Models.Model;
+import Models.User.*;
+
+public class LoginMenu extends Menu {
     public String signup(String username, String nickname, String password) {
-        if (existsUser(username)) {
+        if (User.hasUsername(username)) {
             return "user with username " + username + "already exists";
-        } else if (existsNickname(nickname)) {
+        } else if (User.hasNickname(nickname)) {
             return "user with nickname " + nickname + "already exists";
         } else {
-            addUser(username, nickname, password);
-            currentUser = getUser(username);
+            login(User.createUser(username, password, nickname));
             return "user created successfully!";
         }
     }
 
     public String login(String username, String password) {
-        if (!(existsUser(username)) || !(matchPassword(username, password))) {
+        if (!(User.hasUsername(username)) || !(User.checkPassword(username, password))) {
             return "Username and password didn’t match!";
         } else {
-            currentUser = getUser(username);
+            login(User.getByUsername(username));
             return "user logged in successfully!";
         }
     }

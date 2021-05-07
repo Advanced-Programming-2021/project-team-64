@@ -9,7 +9,7 @@ public class User extends Model {
     private String username, password, nickname;
     private Integer score;
 
-    User (String username, String password, String nickname) {
+    public User (String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
@@ -63,5 +63,13 @@ public class User extends Model {
 
     public Integer getScore () {
         return this.score;
+    }
+
+    public void changePassword (String password) {
+        this.password = password;
+    }
+
+    public void changeNickname (String nickname) {
+        this.nickname = nickname;
     }
 }

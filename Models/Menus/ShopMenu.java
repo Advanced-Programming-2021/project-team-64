@@ -1,4 +1,4 @@
 package Models.Menus;
 
-public class ShopMenu{
+public class ShopMenu extends Menu {
 }

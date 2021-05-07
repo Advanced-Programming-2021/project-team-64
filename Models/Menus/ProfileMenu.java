@@ -1,4 +1,4 @@
 package Models.Menus;
 
-public class ProfileMenu {
+public class ProfileMenu extends Menu {
 }
