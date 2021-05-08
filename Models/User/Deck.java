@@ -1,6 +1,7 @@
 package Models.User;
 
 import Models.Card.Card;
+import Models.Card.CardSystem;
 import Models.Model;
 
 import java.util.ArrayList;
@@ -25,4 +26,33 @@ public class Deck extends Model {
     public void addCardToSideDeck (Card card) {
         this.sideDeck.add(card);
     }
+
+    public void removeCardFromMainDeck (Card card) {
+        this.mainDeck.remove(card);
+    }
+
+    public void removeCardFromSideDeck (Card card) {
+        this.sideDeck.remove(card);
+    }
+
+    public int mainDeckSize () {
+        return this.mainDeck.size();
+    }
+
+    public int sideDeckSize () {
+        return this.sideDeck.size();
+    }
+
+    public int countOfCard (String name) {
+        int cnt = 0;
+        for (Card card: this.mainDeck)
+            if (card.checkName(name))
+                cnt++;
+        for (Card card: this.sideDeck)
+            if (card.checkName(name))
+                cnt++;
+        return cnt;
+    }
+
+
 }
