@@ -57,5 +57,17 @@ public class Deck extends Model {
         return cnt;
     }
 
+    public boolean mainHasCard (String name) {
+        for (Card card: this.mainDeck)
+            if (card.checkName(name))
+                return true;
+        return false;
+    }
 
+    public boolean sideHasCard (String name) {
+        for (Card card: this.sideDeck)
+            if (card.checkName(name))
+                return true;
+        return false;
+    }
 }
