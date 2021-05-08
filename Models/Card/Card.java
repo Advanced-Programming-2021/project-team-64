@@ -1,6 +1,7 @@
 package Models.Card;
 
 import Models.Model;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,16 @@ public interface Card extends Comparable<Card> {
         return this.name.equals(cardName);
     }
 
-    @Override
-    default int compareTo(Card o) {
+    default public int compareTo (Card o) {
         return this.toString().compareTo(o.toString());
     }
+
+    @Override
+    public String toString ();
+
+    @Override
+    public boolean equals (Object o);
+
+    @Override
+    public int hashCode ();
 }
