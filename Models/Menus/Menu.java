@@ -1,16 +1,17 @@
 package Models.Menus;
 
 import Models.Model;
-import Models.User.User;
+import Models.User.*;
 
 public class Menu extends Model {
-    static private User currentUser = null;
+    static public User currentUser = null;
 
-    public void login (User user) {
+    public void login(User user) {
         currentUser = user;
     }
 
-    public void logout () {
+    public void logout() {
         currentUser = null;
     }
+
 }
