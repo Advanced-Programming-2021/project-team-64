@@ -4,11 +4,13 @@ import Models.Card.Card;
 import Models.Card.CardSystem;
 import Models.Model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User extends Model {
     private static ArrayList<User> Users = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
+    private ArrayList<Card> cards = new ArrayList<>();
     private Deck activeDeck = null;
     private String username, password, nickname;
     private Integer score;
@@ -101,10 +103,28 @@ public class User extends Model {
     }
 
     public void addCardToMainDeck (String cardName, String deckName) {
-        this.getDeck(deckName).addCardToMainDeck(CardSystem.getCardCopy(cardName));
+        Card card = CardSystem.getCardCopy(cardName);
+        this.cards.remove(card);
+        this.getDeck(deckName).addCardToMainDeck(card);
     }
 
     public void addCardToSideDeck (String cardName, String deckName) {
-        this.getDeck(deckName).addCardToSideDeck(CardSystem.getCardCopy(cardName));
+        Card card = CardSystem.getCardCopy(cardName);
+        this.cards.remove(card);
+        this.getDeck(deckName).addCardToSideDeck(card);
     }
+
+    public void removeCardFromMainDeck (String cardName, String deckName) {
+        Card card = CardSystem.getCardCopy(cardName);
+        this.getDeck(deckName).removeCardFromMainDeck(card);
+        this.cards.add(card);
+    }
+
+    public void removeCardFromSideDeck (String cardName, String deckName) {
+        Card card = CardSystem.getCardCopy(cardName);
+        this.getDeck(deckName).removeCardFromSideDeck(card);
+        this.cards.add(card);
+    }
+
+
 }
