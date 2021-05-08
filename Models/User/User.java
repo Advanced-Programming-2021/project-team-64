@@ -84,7 +84,10 @@ public class User extends Model {
     }
 
     public void deleteDeck (String deckName) {
-        this.decks.remove(this.getDeck(deckName));
+        Deck deck = this.getDeck(deckName);
+        for (Card card: deck.allCards())
+            this.cards.add(card);
+        this.decks.remove(deck);
     }
 
     public void setActiveDeck (String deckName) {
