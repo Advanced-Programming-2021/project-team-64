@@ -3,6 +3,9 @@ package Models.Menus;
 import Models.User.*;
 
 public class DeckMenu extends Menu {
+    DeckMenu() {
+        this.name = "Deck Menu";
+    }
     public String createDeck(String name) {
         if (currentUser.hasDeck(name)) {
             return "deck with name " + name + " already exists";

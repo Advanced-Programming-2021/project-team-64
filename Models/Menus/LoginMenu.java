@@ -4,6 +4,9 @@ import Models.Model;
 import Models.User.*;
 
 public class LoginMenu extends Menu {
+    LoginMenu() {
+        this.name = "Login Menu";
+    }
     public String signup(String username, String nickname, String password) {
         if (User.hasUsername(username)) {
             return "user with username " + username + "already exists";

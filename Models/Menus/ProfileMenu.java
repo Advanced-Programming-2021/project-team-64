@@ -3,6 +3,9 @@ package Models.Menus;
 import Models.User.*;
 
 public class ProfileMenu extends Menu {
+    ProfileMenu() {
+        this.name = "Profile Menu";
+    }
     public String changeNickname(String nickname) {
         if (User.hasNickname(nickname)) {
             return "user with nickname " + nickname + " already exists";
