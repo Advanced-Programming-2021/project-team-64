@@ -126,5 +126,7 @@ public class User extends Model {
         this.cards.add(card);
     }
 
-
+    public int countOfCard (String deckName, String cardName) {
+        return this.getDeck(deckName).countOfCard(cardName);
+    }
 }
