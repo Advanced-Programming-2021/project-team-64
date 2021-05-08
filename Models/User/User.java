@@ -132,4 +132,11 @@ public class User extends Model {
     public int countOfCard(String deckName, String cardName) {
         return this.getDeck(deckName).countOfCard(cardName);
     }
+
+    public boolean hasCard (String name) {
+        for (Card card: this.cards)
+            if (card.checkName(name))
+                return true;
+        return false;
+    }
 }
