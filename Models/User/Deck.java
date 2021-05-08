@@ -43,12 +43,15 @@ public class Deck extends Model {
         return this.sideDeck.size();
     }
 
+    public ArrayList<Card> allCards () {
+        ArrayList<Card> res = new ArrayList<>(this.mainDeck);
+        res.addAll(sideDeck);
+        return res;
+    }
+
     public int countOfCard (String name) {
         int cnt = 0;
-        for (Card card: this.mainDeck)
-            if (card.checkName(name))
-                cnt++;
-        for (Card card: this.sideDeck)
+        for (Card card: this.allCards())
             if (card.checkName(name))
                 cnt++;
         return cnt;
