@@ -12,6 +12,7 @@ public class DeckMenu extends Menu {
         }
         else {
             currentUser.createDeck(name);
+            return "deck created successfully!";
         }
     }
 
