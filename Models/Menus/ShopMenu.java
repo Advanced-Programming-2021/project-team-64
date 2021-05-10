@@ -13,11 +13,9 @@ public class ShopMenu extends Menu {
     public String shopBuy(String cardName) {
         if (!(currentUser.hasCard(cardName))) {
             return "there is no card with this name";
-        }
-        else if (currentUser.getMoney() < getCardCost(cardName)) {
+        } else if (currentUser.getMoney() < getCardCost(cardName)) {
             return "not enough money";
-        }
-        else {
+        } else {
             currentUser.addToFreeCards(cardName);
             return "purchase successful!";
         }
