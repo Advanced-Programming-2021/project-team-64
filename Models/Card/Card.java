@@ -10,6 +10,7 @@ public interface Card extends Comparable<Card> {
     String attribute = "";
     String type = "";
     String description = "";
+    Integer cost = 0;
     Integer level = 0;
     Integer cardNumber = 0;
     Integer attack = 0;
@@ -21,6 +22,14 @@ public interface Card extends Comparable<Card> {
 
     default public int compareTo (Card o) {
         return this.toString().compareTo(o.toString());
+    }
+
+    default public String getName () {
+        return this.name;
+    }
+
+    default public Integer getCost () {
+        return this.cost;
     }
 
     @Override
