@@ -70,4 +70,8 @@ public class Deck extends Model {
                 return true;
         return false;
     }
+
+    public boolean isValid () {
+        return this.mainDeck.size() >= 40;
+    }
 }

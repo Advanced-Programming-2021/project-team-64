@@ -13,13 +13,16 @@ public class User extends Model {
     private ArrayList<Card> cards = new ArrayList<>();
     private Deck activeDeck = null;
     private String username, password, nickname;
-    private Integer score;
+    private Integer score, money;
+
+    public User () {}
 
     public User(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
         this.score = 0;
+        this.money = 0;
     }
 
     public static ArrayList<User> getUsers() {
@@ -67,8 +70,24 @@ public class User extends Model {
         return this.password.equals(password);
     }
 
+    public String getUsername () {
+        return this.username;
+    }
+
     public Integer getScore() {
         return this.score;
+    }
+
+    public Integer getMoney () {
+        return this.money;
+    }
+
+    public void increaseMoney (int delta) {
+        this.money += delta;
+    }
+
+    public void decreaseMoney (int delta) {
+        this.money -= delta;
     }
 
     public void changePassword(String password) {
@@ -105,6 +124,10 @@ public class User extends Model {
         return this.getDeck(deckName) != null;
     }
 
+    public void addCard (Card card) {
+        this.cards.add(card);
+    }
+
     public void addCardToMainDeck(String cardName, String deckName) {
         Card card = CardSystem.getCardCopy(cardName);
         this.cards.remove(card);
@@ -138,5 +161,13 @@ public class User extends Model {
             if (card.checkName(name))
                 return true;
         return false;
+    }
+
+    public boolean hasActiveDeck () {
+        return (this.activeDeck != null);
+    }
+
+    public boolean activeDeckIsValid () {
+        return (this.activeDeck != null && this.activeDeck.isValid());
     }
 }

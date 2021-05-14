@@ -1,14 +1,30 @@
+import Models.Card.Card;
+import Models.Card.CardSystem;
+import Models.Card.Monster;
+import Models.Model;
 import com.google.gson.*;
 
 import java.util.ArrayList;
+import Models.Model;
 import Models.User.*;
 
 public class Main {
+    static ArrayList<Model> modules = new ArrayList<>();
     public static void main(String[] args) {
         // read data from database
-        User user = new User("mahdi", "pass", "nick");
-        System.out.println(new Gson().toJson(user));
+        Gson g = new Gson();
+        User a = new User("mahdi", "pass", "nick");
+        User b = new User("mahdi", "pass", "nick");
+        User c = new User("mahdi", "pass", "nick");
+        System.out.printf("%d %d %d\n", a.compareTo(b), a.compareTo(c), b.compareTo(c));
+        System.out.printf("%b %b %b\n", a.equals(b), a.equals(c), b.equals(c));
 
+        Card A = new Monster();
+        Card B = new Monster();
+        Card C = new Monster();
+        System.out.printf("%d %d %d\n", A.hashCode(), B.hashCode(), C.hashCode());
+        System.out.printf("%d %d %d\n", A.compareTo(B), A.compareTo(C), B.compareTo(C));
+        System.out.printf("%b %b %b\n", A.equals(B), A.equals(C), B.equals(C));
         // write data to database
     }
 }
