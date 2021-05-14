@@ -3,6 +3,9 @@ package Models.Card;
 import Models.Model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CardSystem extends Model {
     static public ArrayList<Card> Cards = new ArrayList<Card>();
@@ -23,5 +26,11 @@ public class CardSystem extends Model {
 
     static public boolean hasCard (String cardName) {
         return getCardCopy(cardName) != null;
+    }
+
+    static public ArrayList<Card> getCards () {
+        ArrayList<Card> cards = (ArrayList<Card>) Cards.clone();
+        Collections.sort(cards, Comparator.comparing(Card::getName));
+        return cards;
     }
 }
