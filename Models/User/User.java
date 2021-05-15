@@ -124,8 +124,8 @@ public class User extends Model {
         return this.getDeck(deckName) != null;
     }
 
-    public void addCard (Card card) {
-        this.cards.add(card);
+    public void addCard (String cardName) {
+        this.cards.add(CardSystem.getCardCopy(cardName));
     }
 
     public void addCardToMainDeck(String cardName, String deckName) {
