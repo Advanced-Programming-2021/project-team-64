@@ -1,5 +1,6 @@
 package Models.Menus;
 
+import Models.Model;
 import Models.User.*;
 import Models.Card.*;
 
@@ -13,22 +14,19 @@ public class ShopMenu extends Menu {
     public String shopBuy(String cardName) {
         if (!(currentUser.hasCard(cardName))) {
             return "there is no card with this name";
-        } else if (currentUser.getMoney() < getCardCost(cardName)) {
+        } else if (currentUser.getMoney() < CardSystem.getCardCost(cardName)) {
             return "not enough money";
         } else {
-            currentUser.addToFreeCards(cardName);
+            currentUser.addCard(cardName);
             return "purchase successful!";
         }
     }
 
     public ArrayList<String> showAllCards() {
-        ArrayList<String> cards = getAllCards();
+        ArrayList<Card> cards = CardSystem.getCardsSortedByName();
         ArrayList<String> shopList = new ArrayList<>();
-        for (String card : cards) {
-            int cost = getCardCost(card);
-            String tmp = card + ":" + cost;
-            shopList.add(tmp);
-        }
+        for (Card card : cards)
+            shopList.add(card.getName() + ":" + card.getCost());
         return shopList;
     }
 }
