@@ -13,10 +13,10 @@ public class Monster implements Card {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Card))
+        if (!(o instanceof Monster))
             return false;
 
-        Card c = (Card) o;
+        Monster c = (Monster) o;
         return this.hashCode() == c.hashCode();
     }
 

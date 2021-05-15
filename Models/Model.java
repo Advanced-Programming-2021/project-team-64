@@ -6,7 +6,7 @@ public class Model implements Comparable<Model> {
     // here we will have all common functions for models
     // like importing and exporting datas and etc.
     // static functions for database actions
-
+    static Gson g = new Gson();
 
     @Override
     public int compareTo (Model o) {
@@ -15,7 +15,7 @@ public class Model implements Comparable<Model> {
 
     @Override
     public String toString () {
-        return (new Gson()).toJson(this);
+        return g.toJson(this);
     }
 
     @Override
@@ -31,6 +31,6 @@ public class Model implements Comparable<Model> {
 
     @Override
     public int hashCode () {
-        return (new Gson()).toJson(this).hashCode();
+        return g.toJson(this).hashCode();
     }
 }

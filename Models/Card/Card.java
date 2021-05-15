@@ -1,10 +1,5 @@
 package Models.Card;
 
-import Models.Model;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-
 public interface Card extends Comparable<Card> {
     String name = "";
     String attribute = "";

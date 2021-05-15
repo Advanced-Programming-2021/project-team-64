@@ -13,10 +13,10 @@ public class Spell implements Card {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Model))
+        if (!(o instanceof Spell))
             return false;
 
-        Model c = (Model) o;
+        Spell c = (Spell) o;
         return this.hashCode() == c.hashCode();
     }
 
