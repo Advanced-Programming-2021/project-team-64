@@ -7,7 +7,7 @@ import Models.Card.*;
 import java.util.ArrayList;
 
 public class ShopMenu extends Menu {
-    ShopMenu() {
+    public ShopMenu() {
         this.name = "Shop Menu";
     }
 

@@ -11,8 +11,9 @@ public class Menu extends Model {
         currentUser = user;
     }
 
-    public void logout() {
+    public String logout() {
         currentUser = null;
+        return "user logged out successfully!";
     }
 
     public String showCurrent() {

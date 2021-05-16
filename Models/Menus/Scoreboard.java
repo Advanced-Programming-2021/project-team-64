@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.Collections;
 
 public class Scoreboard extends Menu {
-    Scoreboard() {
+    public Scoreboard() {
         this.name = "Scoreboard";
     }
 

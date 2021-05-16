@@ -3,7 +3,7 @@ package Models.Menus;
 import Models.User.*;
 
 public class DeckMenu extends Menu {
-    DeckMenu() { this.name = "Deck Menu"; }
+    public DeckMenu() { this.name = "Deck Menu"; }
 
     public String createDeck(String name) {
         if (currentUser.hasDeck(name)) {
