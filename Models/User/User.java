@@ -12,7 +12,10 @@ public class User extends Model {
     private ArrayList<Deck> decks = new ArrayList<>();
     private ArrayList<Card> cards = new ArrayList<>();
     private Deck activeDeck = null;
-    private String username, password, nickname;
+    private String username;
+    private String password;
+
+    private String nickname;
     private Integer score, money;
 
     public User () {}
@@ -51,6 +54,10 @@ public class User extends Model {
                 return user;
         }
         return null;
+    }
+
+    public String getNickname() {
+        return this.nickname;
     }
 
     static public boolean hasUsername(String username) {

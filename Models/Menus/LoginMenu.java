@@ -4,7 +4,7 @@ import Models.Model;
 import Models.User.*;
 
 public class LoginMenu extends Menu {
-    LoginMenu() {
+    public LoginMenu() {
         this.name = "Login Menu";
     }
 

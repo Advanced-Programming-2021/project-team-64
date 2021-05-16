@@ -3,7 +3,7 @@ package Models.Menus;
 import Models.User.*;
 
 public class DuelMenu extends Menu {
-    DuelMenu() { this.name = "Duel Menu"; }
+    public DuelMenu() { this.name = "Duel Menu"; }
 
     public String newP2PGame(String player2Username, int rounds) {
         // TODO :

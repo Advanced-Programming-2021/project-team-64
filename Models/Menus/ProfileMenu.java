@@ -3,7 +3,7 @@ package Models.Menus;
 import Models.User.*;
 
 public class ProfileMenu extends Menu {
-    ProfileMenu() {
+    public ProfileMenu() {
         this.name = "Profile Menu";
     }
 
