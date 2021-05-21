@@ -10,6 +10,7 @@ public class Deck extends Model {
     private String name;
     private ArrayList<Card> mainDeck = new ArrayList<>();
     private ArrayList<Card> sideDeck = new ArrayList<>();
+    private int lastname;
 
     Deck (String name) {
         this.name = name;
