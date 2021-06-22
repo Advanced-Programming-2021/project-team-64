@@ -1,5 +1,4 @@
-./target
+./target/
+./out/
 ./target/*
-./out
 ./out/*
-
