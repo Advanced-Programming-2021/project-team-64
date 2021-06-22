@@ -330,7 +330,6 @@ public class Controller {
         checkMenuExit(input);
         if (stringExists(input, "duel")) {
             if (stringExists(input, "--ai")) {
-                System.out.println("p2a?");
                 if (validInput("duel", input)) {
                     String tmp = getNames("duel", input);
                     updateMap(inputCatcher(tmp, ""));
@@ -338,7 +337,6 @@ public class Controller {
                     output = DuelMenu.newP2AGame(Integer.parseInt(map.get("--rounds")));
                 }
             } else {
-                System.out.println("p2p?");
                 if (validInput("duel", input)) {
                     String tmp = getNames("duel", input);
                     updateMap(inputCatcher(tmp, ""));
