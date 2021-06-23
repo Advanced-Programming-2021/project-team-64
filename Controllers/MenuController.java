@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import Models.Menus.*;
 import Models.User.User;
 
-public class Controller {
+public class MenuController {
     private String output;
     public Place place = Place.LOGINMENU;
     private static HashMap<String, String> map = new HashMap<>();
@@ -105,7 +105,7 @@ public class Controller {
         return matcher1.group(1);
     }
 
-    public boolean checkWord(String check, String input) {
+    private boolean checkWord(String check, String input) {
         check = check + ".*";
         return Pattern.matches(check, input);
     }
@@ -150,7 +150,7 @@ public class Controller {
         }
     }
 
-    public void checkMenuExit(String input) {
+    private void checkMenuExit(String input) {
         if (checkWord("menu exit", input)) {
             if (this.place != Place.MAINMENU) {
                 if (this.place == Place.LOGINMENU) {
@@ -333,14 +333,12 @@ public class Controller {
                 if (validInput("duel", input)) {
                     String tmp = getNames("duel", input);
                     updateMap(inputCatcher(tmp, ""));
-                    System.out.println("P2A");
                     output = DuelMenu.newP2AGame(Integer.parseInt(map.get("--rounds")));
                 }
             } else {
                 if (validInput("duel", input)) {
                     String tmp = getNames("duel", input);
                     updateMap(inputCatcher(tmp, ""));
-                    System.out.println("P2P");
                     output = DuelMenu.newP2PGame(map.get("--second-player"), Integer.parseInt(map.get("--rounds")));
                 }
             }

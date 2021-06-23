@@ -1,21 +1,25 @@
 package Views;
 
-import Controllers.Controller;
+import Controllers.MenuController;
 
 import java.util.Scanner;
 
 public class View {
-    public static Controller controller;
+    public static MenuController controller;
     public static Scanner scanner;
 
     static {
-        controller = new Controller();
+        controller = new MenuController();
         scanner = new Scanner(System.in);
     }
 
     public void setInput(String input) {
         controller.setOutput("invalid command");
         controller.recognizeInput(input);
+    }
+
+    public static String getInput() {
+        return scanner.nextLine();
     }
 
     public void getOutput() {

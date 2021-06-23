@@ -11,7 +11,7 @@ public class User extends Model {
     private static ArrayList<User> Users = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private ArrayList<Card> cards = new ArrayList<>();
-    private Deck activeDeck = null;
+    public Deck activeDeck = null;
     private String username;
     private String password;
 

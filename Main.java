@@ -1,4 +1,3 @@
-import Controllers.Controller;
 import Models.Card.Card;
 import Models.Card.Monster;
 import Models.Model;
@@ -7,12 +6,8 @@ import Views.View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Models.Model;
-import Models.User.*;
 import Models.User.User;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 public class Main {
     static ArrayList<Model> modules = new ArrayList<>();

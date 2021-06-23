@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Deck extends Model {
     private String name;
-    private ArrayList<Card> mainDeck = new ArrayList<>();
-    private ArrayList<Card> sideDeck = new ArrayList<>();
+    public ArrayList<Card> mainDeck = new ArrayList<>();
+    public ArrayList<Card> sideDeck = new ArrayList<>();
 
     Deck (String name) {
         this.name = name;

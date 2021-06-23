@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
-    private User user;
-    private int lifePoint = 8000;
-    private Deck deck = null;
-    private Card fieldZone = null;
-    private Cell[] spellCells = new Cell[5];
-    private Cell[] monsterCells = new Cell[5];
-    private ArrayList<Card> graveYard = new ArrayList<Card>();
+    public User user;
+    public int lifePoint = 8000;
+    public Deck deck = null;
+    public Card fieldZone = null;
+    public Cell[] spellCells = new Cell[5];
+    public Cell[] monsterCells = new Cell[5];
+    public ArrayList<Card> graveYard = new ArrayList<Card>();
+    public Cell[] hand = new Cell[6];
 
     public Board(User user, Deck deck) {
         this.user = user;
