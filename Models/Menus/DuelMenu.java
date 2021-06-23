@@ -1,5 +1,6 @@
 package Models.Menus;
 
+import Controllers.GameController;
 import Models.User.*;
 
 public class DuelMenu extends Menu {
@@ -34,8 +35,7 @@ public class DuelMenu extends Menu {
             return "number of rounds is not supported";
         }
 
-        // TODO :
-        // START P2P GAME WITH PLAYER 2
+        GameController.recognizeGameInputsP2P(new User[]{currentUser, player2});
         return "";
     }
 
@@ -52,8 +52,7 @@ public class DuelMenu extends Menu {
             return "number of rounds is not supported";
         }
 
-        // TODO :
-        // START P2A GAME
+        GameController.recognizeGameInputsP2A(currentUser);
         return "";
     }
 }

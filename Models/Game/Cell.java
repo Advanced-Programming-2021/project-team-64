@@ -25,4 +25,16 @@ public class Cell {
     public Card getCard() {
         return card;
     }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

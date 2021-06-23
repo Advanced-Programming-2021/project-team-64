@@ -1,6 +1,6 @@
 package Models.Card;
 
-import Controllers.Game;
+import Controllers.GameController;
 import Models.Card.Ability.Ability;
 import Models.Card.Ability.AfterDeathAbility;
 import Models.Card.Ability.TurnUpAbility;
