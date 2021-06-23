@@ -24,4 +24,6 @@ public class Monster implements Card {
     public int hashCode() {
         return (new Gson()).toJson(this).hashCode();
     }
+
+    
 }

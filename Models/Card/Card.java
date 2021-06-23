@@ -1,5 +1,10 @@
 package Models.Card;
 
+import Models.Game.GameBoard;
+import Models.Game.Cell;
+
+import java.util.ArrayList;
+
 public interface Card extends Comparable<Card> {
     String name = "";
     String attribute = "";
@@ -35,4 +40,7 @@ public interface Card extends Comparable<Card> {
 
     @Override
     public int hashCode ();
+
+    default public void ability (GameBoard gameBoard, ArrayList<Cell>) {
+    }
 }
