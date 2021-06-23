@@ -72,7 +72,7 @@ public class Card implements Comparable<Card> {
     }
 
     public void decreaseAttack (int x) {
-        attack -= x;
+        attack = Math.max(0, attack - x);
     }
 
     public void increaseDefence (int x) {
@@ -80,7 +80,7 @@ public class Card implements Comparable<Card> {
     }
 
     public void decreaseDefence (int x) {
-        defence -= x;
+        defence = Math.max(0, defence - x);
     }
 
     public int getAttack(Board myBoard) {
@@ -95,25 +95,27 @@ public class Card implements Comparable<Card> {
         else if (this.checkName("Terraforming"))
             Ability.Terraforming();
         else if (this.checkName("Pot of Greed"))
-            Ability.Pot_of_Greed();
+            Ability.PotOfGreed();
         else if (this.checkName("Raigeki"))
             Ability.Raigeki(enemyBoard);
         else if (this.checkName("Change of Heart"))
-            Ability.Change_of_Heart();
+            Ability.ChangeOfHeart();
         else if (this.checkName("Harpie’s Feather Duster"))
-            Ability.Harpies_Feather_Duster();
+            Ability.HarpiesFeatherDuster();
         else if (this.checkName("Dark Hole"))
-            Ability.Dark_Hole();
+            Ability.DarkHole();
         else if (this.checkName("Twin Twisters"))
-            Ability.Twin_Twisters();
+            Ability.TwinTwisters();
         else if (this.checkName("Mystical space typhoon"))
-            Ability.Mystical_space_typhoon();
+            Ability.MysticalSpaceTyphoon();
         else if (this.checkName("Ring of Defense"))
-            Ability.Ring_of_Defense();
+            Ability.RingOfDefense();
         else if (this.checkName("Yami"))
             Ability.Yami(myBoard, enemyBoard);
         else if (this.checkName("Forest"))
             Ability.Forest(myBoard, enemyBoard);
+        else if (this.checkName("Closed Forest"))
+            Ability.ClosedForest();
 
     }
 

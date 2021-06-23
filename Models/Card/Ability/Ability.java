@@ -15,7 +15,7 @@ public class Ability {
         // ی􏰅 عدد کارت افسون میدان􏰀)Field Spell( را از￼ دک􏰀 که در اختیار دارید، به دست خود اضافه کنید.
     }
 
-    static public void Pot_of_Greed() {
+    static public void PotOfGreed() {
         // ۲ کارت از بالای دک بردارید
     }
 
@@ -23,27 +23,27 @@ public class Ability {
         // تمام هیولاهای حریف را نابود کنید
     }
 
-    static public void Change_of_Heart() {
+    static public void ChangeOfHeart() {
         // ی􏰁􏰀 از هیولاهایی که حریفتان کنترل م􏰀کند را مورد هدف قرار￼ دهید و تا انتهای این نوبت از بازی آن را به کنترل خود درآورید.
     }
 
-    static public void Harpies_Feather_Duster() {
+    static public void HarpiesFeatherDuster() {
         // تمام کارتهای افسون و تله که حریفتان کنترل م􏰀کند را نابود کنید.
     }
 
-    static public void Dark_Hole() {
+    static public void DarkHole() {
         //تمام کارتهای هیولای موجود در زمین بازی را نابود کنید.￼
     }
 
-    static public void Twin_Twisters() {
+    static public void TwinTwisters() {
         // ی􏰁􏰀 از کارتهای دستتان را دور بریزید؛ سپس حداکثر ٢ کارت افسون￼ یا تله موجود در زمین بازی را مورد هدف قرار دهید و نابودشان کنید.
     }
 
-    static public void Mystical_space_typhoon() {
+    static public void MysticalSpaceTyphoon() {
         // ی􏰅 کارت افسون یا تله موجود در زمین بازی￼ را مورد هدف قرار داده و سپس نابودش کنید.
     }
 
-    static public void Ring_of_Defense() {
+    static public void RingOfDefense() {
         // هرگاه ی􏰅 کارت تله با اثر تخریب کننده فعال شود، آن آسیب را به ٠ برسانید.￼
     }
 
@@ -72,5 +72,13 @@ public class Ability {
             card.increaseAttack(200);
             card.increaseDefence(200);
         }
+    }
+
+    static public void ClosedForest(Board myboard) {
+        int cnt = myboard.graveYard.size();
+        String[] types = {"Beast", "Beast-Warrior"};
+        ArrayList<Card> cards = myboard.getCardsOfTypes(types); // Todo: what are all Beast types?
+        for (Card card: cards)
+            card.increaseAttack(100 * cnt);
     }
 }
