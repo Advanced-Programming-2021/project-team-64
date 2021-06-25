@@ -24,6 +24,7 @@ public class GameController extends MenuController {
     private static int selectedIndex = 0;
     private static int playerNum = 0;
     private static boolean isSelectedInHand = false;
+    private static boolean isEnemyCard = false;
     private static int number = 0;
     private static int summonedCards = 0;
 
@@ -109,6 +110,7 @@ public class GameController extends MenuController {
         selectedCard = null;
         selectedCell = null;
         isSelectedInHand = false;
+        isEnemyCard = false;
     }
 
     public static void recognizeGameInputsP2P(User[] players) {
@@ -130,6 +132,17 @@ public class GameController extends MenuController {
                 getInput();
                 if (checkMenuExit(input)) {
                     return;
+                }
+                while(phase != 3 && phase != 5 && mainPhaseAction()) {
+                    System.out.println("action not allowed in this phase");
+                    getInput();
+                    if (checkMenuExit(input)) {
+                        return;
+                    }
+                }
+                while(phase != 4 && battlePhaseAction()) {
+                    System.out.println("action not allowed in this phase");
+                    getInput();
                 }
 
                 recognizeSelect(playerNum);
@@ -315,6 +328,10 @@ public class GameController extends MenuController {
                         if (checkMenuExit(input)) {
                             return;
                         }
+                        while(battlePhaseAction()) {
+                            System.out.println("action not allowed in this phase");
+                            getInput();
+                        }
 
 
                         recognizeSelect(playerNum);
@@ -416,7 +433,10 @@ public class GameController extends MenuController {
                         if (checkMenuExit(input)) {
                             return;
                         }
-
+                        while(mainPhaseAction()) {
+                            System.out.println("action not allowed in this phase");
+                            getInput();
+                        }
 
                         recognizeSelect(playerNum);
                         recognizeCardShow();
@@ -479,13 +499,39 @@ public class GameController extends MenuController {
     }
 
     private static void recognizeCardShow() {
-        if (checkWord("card show --selected")) {
-
+        if (checkWord("card show --selected", input)) {
+            if(selectedCard == null) {
+                output = "no card is selected yet";
+            }
+            else if(isEnemyCard && selectedCell.getState() == 2) {
+                output = "card is not visible";
+            }
+            else {
+                output = selectedCard.getName() + " : " + "att : " + selectedCard.getAttack1() + "def : " + selectedCard.getDefence();
+            }
+            System.out.println(output);
         }
     }
 
     private static void recognizeShowGraveYard() {
-        if (checkWord("show graveyard")) {
+        while(!input.equals("back")) {
+            if (checkWord("show graveyard", input)) {
+                String tmp = getNames("show graveyard", input);
+                int player = playerNum;
+                if (stringExists(tmp, "--opponent")) {
+                    player = 1 - player;
+                }
+                if (gameBoard.boards[player].graveYard.size() == 0) {
+                    System.out.println("graveyard empty");
+                } else {
+                    int i = 1;
+                    for (Card card : gameBoard.boards[player].graveYard) {
+                        System.out.println("" + i + ". " + card.getName() + " : " + card.getDescription());
+                        i++;
+                    }
+                }
+            }
+            getInput();
 
         }
     }
@@ -498,9 +544,10 @@ public class GameController extends MenuController {
             String[] words = tmp.split(" ");
 
             number = 0;
-
             Board board = gameBoard.boards[playerNum];
+            boolean enemy = false;
             if (stringExists(tmp, "--opponent")) {
+                enemy = true;
                 board = gameBoard.boards[1 - playerNum];
             }
 
@@ -516,6 +563,7 @@ public class GameController extends MenuController {
                 } else {
                     selectedCard = board.monsterCells[number].getCard();
                     selectedCell = board.monsterCells[number];
+                    isEnemyCard = enemy;
                     output = "card selected";
                 }
             } else if (stringExists(tmp, "--spell")) {
@@ -528,6 +576,7 @@ public class GameController extends MenuController {
                 } else {
                     selectedCard = board.spellCells[number].getCard();
                     selectedCell = board.monsterCells[number];
+                    isEnemyCard = enemy;
                     output = "card selected";
                 }
             } else if (stringExists(tmp, "--field")) {
@@ -536,6 +585,7 @@ public class GameController extends MenuController {
                 } else {
                     selectedCard = board.fieldZone.getCard();
                     selectedCell = board.fieldZone;
+                    isEnemyCard = enemy;
                     output = "card selected";
                 }
             } else if (stringExists(tmp, "--hand")) {
@@ -545,6 +595,7 @@ public class GameController extends MenuController {
                     selectedCard = board.hand.get(number - 1).getCard();
                     selectedCell = board.monsterCells[number - 1];
                     isSelectedInHand = true;
+                    isEnemyCard = enemy;
                     output = "card selected";
                 }
             } else if (stringExists(tmp, "-d")) {
@@ -553,6 +604,7 @@ public class GameController extends MenuController {
                 } else {
                     isSelectedInHand = false;
                     output = "card deselected";
+
                     deselect();
                 }
             }
@@ -560,6 +612,13 @@ public class GameController extends MenuController {
         }
     }
 
+    private static boolean mainPhaseAction() {
+        return checkWord("set", input) || checkWord("summon", input) || checkWord("flip-summon", input) || checkWord("activate", input);
+    }
+
+    private static boolean battlePhaseAction() {
+        return checkWord("attack", input);
+    }
 
     public static void recognizeGameInputsP2A(User player) {
         currentUser = player;
