@@ -15,6 +15,30 @@ public class Deck extends Model {
         this.name = name;
     }
 
+    public void showShortData () {
+        System.out.printf("%s: main %d, side %d, %s\n",
+                this.name, this.mainDeckSize(), this.sideDeckSize(), this.isValid()? "valid": "invalid");
+    }
+
+    public void showADeck (String type, ArrayList<Card> deck) {
+        System.out.printf("Deck: %s\n%s deck:\nMonsters:\n", name, type);
+        for (Card card: deck)
+            if (card.isMonster())
+                card.showString();
+        System.out.println("Spell and Traps:");
+        for (Card card: deck)
+            if (!card.isMonster())
+                card.showString();
+    }
+
+    public void showMainDeck () {
+        showADeck("Main", mainDeck);
+    }
+
+    public void showSideDeck () {
+        showADeck("Side", sideDeck);
+    }
+
     public boolean checkName (String name) {
         return this.name.equals(name);
     }

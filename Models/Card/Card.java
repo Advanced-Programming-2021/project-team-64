@@ -59,6 +59,10 @@ public class Card implements Comparable<Card> {
         this.defence = defence;
     }
 
+    public void showString () {
+        System.out.printf("%s: %s\n", this.name, this.description);
+    }
+
     public boolean isMonster () {
         return this.checkMainType("Monster");
     }
