@@ -49,4 +49,11 @@ public class Database {
         System.out.println(new Gson().toJson(res));
         return res;
     }
+
+    static public void writeToFile (String filePath, String data) {
+        File file = new File(filePath);
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(data);
+        fileWriter.close();
+    }
 }

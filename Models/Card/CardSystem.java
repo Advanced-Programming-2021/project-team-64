@@ -19,10 +19,7 @@ public class CardSystem extends Model {
     static public ArrayList<Card> Cards = new ArrayList<>();
 
     static public void exportToFile () throws IOException {
-        File file = new File(filePath);
-        FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(new Gson().toJson(Cards));
-        fileWriter.close();
+        Database.writeToFile(filePath, new Gson().toJson(Cards));
     }
 
     static public void importFromFile () throws IOException {

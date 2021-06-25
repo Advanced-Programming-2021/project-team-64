@@ -18,10 +18,12 @@ public class Main {
 
     static public void importFromDatabase () throws IOException {
         CardSystem.importFromFile();
+        User.importFromFile();
     }
 
     static public void exportToDatabase () throws IOException {
         CardSystem.exportToFile();
+        User.exportToFile();
     }
 
     public static void main(String[] args) throws IOException {

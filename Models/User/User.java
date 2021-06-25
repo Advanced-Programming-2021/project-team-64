@@ -1,13 +1,17 @@
 package Models.User;
 
+import Database.Database;
 import Models.Card.Card;
 import Models.Card.CardSystem;
 import Models.Model;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User extends Model {
+    static String filePath = "Database/user.txt";
     private static ArrayList<User> Users = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private ArrayList<Card> cards = new ArrayList<>();
@@ -17,6 +21,14 @@ public class User extends Model {
 
     private String nickname;
     private Integer score, money;
+
+    static public void exportToFile () {
+        Database.writeToFile(filePath, new Gson().toJson(Users));
+    }
+
+    static public void importFromFile () throws IOException {
+        Users = new Gson().fromJson(Database.fileToString(filePath), Users.getClass());
+    }
 
     public User () {}
 
