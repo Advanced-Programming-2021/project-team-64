@@ -164,4 +164,8 @@ public class Card implements Comparable<Card> {
         if (this.checkName("Man-Eater Bug"))
             TurnUpAbility.Man_Eater_Bug();
     }
+
+    public String getDescription() {
+        return this.description;
+    }
 }
