@@ -15,7 +15,7 @@ public class Board {
     public Card fieldZone = null;
     public Cell[] spellCells = new Cell[5];
     public Cell[] monsterCells = new Cell[5];
-    public ArrayList<Card> graveYard = new ArrayList<Card>();
+    public ArrayList<Card> graveYard = new ArrayList<>();
     private Cell[] allCells = new Cell[10];
     public Cell[] hand = new Cell[6];
 

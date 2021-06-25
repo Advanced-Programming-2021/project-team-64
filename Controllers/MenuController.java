@@ -110,7 +110,7 @@ public class MenuController {
         return Pattern.matches(check, input);
     }
 
-    public boolean stringExists(String input, String check) {
+    private boolean stringExists(String input, String check) {
         String[] tmp = input.split(" ");
         for (String s : tmp) {
             if (s.equals(check)) {
