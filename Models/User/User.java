@@ -199,4 +199,9 @@ public class User extends Model {
             if (deck != activeDeck)
                 deck.showShortData();
     }
+
+    public void showFreeCards () {
+        for (Card card: cards)
+            card.showString();
+    }
 }

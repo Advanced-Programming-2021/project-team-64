@@ -291,11 +291,9 @@ public class MenuController {
                 }
             }
         } else if (checkWord("deck show --all", input)) {
-            // TODO :
-            // SHOW ALL CARDS
+            Menu.currentUser.showAllDecks();
         } else if (checkWord("deck show --cards", input)) {
-            // TODO :
-            // SHOW FREE CARDS
+            Menu.currentUser.showFreeCards();
         } else if (checkWord("deck show", input)) {
             if (validInput("deck show", input)) {
                 String tmp = getNames("deck show", input);
