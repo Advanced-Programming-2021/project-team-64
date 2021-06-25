@@ -6,6 +6,7 @@ import Models.Card.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Board {
     public User user;
@@ -44,5 +45,41 @@ public class Board {
                         cards.add(allCells[i].getCard());
         }
         return cards;
+    }
+
+    public boolean hasCardInHand (String name) {
+        for (Cell cell: this.hand)
+            if (cell.hasCard() && cell.getCard().checkName(name))
+                return true;
+        return false;
+    }
+
+    public void deleteCardFromHandByName (String name) {
+        for (Cell cell: this.hand)
+            if (cell.hasCard() && cell.getCard().checkName(name))
+                cell.deleteCard();
+    }
+
+    public void deleteRandomCardFromHand () {
+        int cnt = this.countOfCardsInHand();
+        if (cnt == 0)
+            return;
+        int index = (new Random()).nextInt(cnt);
+        for (Cell cell: this.hand)
+            if (cell.hasCard()) {
+                if (index == 0) {
+                    cell.deleteCard();
+                    return;
+                }
+                index--;
+            }
+    }
+
+    public int countOfCardsInHand () {
+        int cnt = 0;
+        for (Cell cell: this.hand)
+            if (cell.hasCard())
+                cnt++;
+        return cnt;
     }
 }

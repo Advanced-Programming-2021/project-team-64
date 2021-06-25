@@ -37,4 +37,8 @@ public class Cell {
     public void setState(int state) {
         this.state = state;
     }
+
+    public void deleteCard () {
+        this.card = null;
+    }
 }

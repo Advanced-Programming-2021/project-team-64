@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Card implements Comparable<Card> {
     private String name = "";
     private String attribute = "";
+    private String mainType = "";
     private String type = "";
     private String description = "";
     private Integer cost = 0;
@@ -45,6 +46,10 @@ public class Card implements Comparable<Card> {
 
     public boolean checkName (String cardName) {
         return this.name.equals(cardName);
+    }
+
+    public boolean checkMainType (String type) {
+        return this.mainType.equals(type);
     }
 
     public boolean checkType (String type) {
@@ -115,8 +120,13 @@ public class Card implements Comparable<Card> {
         else if (this.checkName("Forest"))
             Ability.Forest(myBoard, enemyBoard);
         else if (this.checkName("Closed Forest"))
-            Ability.ClosedForest();
-
+            Ability.ClosedForest(myBoard);
+        else if (this.checkName("UMIIRUKA"))
+            Ability.UMIIRUKA(myBoard, enemyBoard);
+        else if (this.checkName("Mind Crush"))
+            Ability.MindCrush(myBoard, enemyBoard);
+        else if (this.checkName("Call of the Haunted"))
+            Ability.CallOfTheHaunted(myBoard);
     }
 
     public void afterPlacement (Cell me, GameBoard gameBoard, ArrayList<Cell> cells) {
