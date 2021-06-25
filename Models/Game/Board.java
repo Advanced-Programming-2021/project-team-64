@@ -12,12 +12,12 @@ public class Board {
     public User user;
     public int lifePoint = 8000;
     public Deck deck = null;
-    public Card fieldZone = null;
+    public Cell fieldZone = null;
     public Cell[] spellCells = new Cell[5];
     public Cell[] monsterCells = new Cell[5];
     public ArrayList<Card> graveYard = new ArrayList<>();
     private Cell[] allCells = new Cell[10];
-    public Cell[] hand = new Cell[6];
+    public ArrayList<Cell> hand = new ArrayList<>();
 
     public Board(User user, Deck deck) {
         this.user = user;
@@ -78,6 +78,22 @@ public class Board {
     public int countOfCardsInHand () {
         int cnt = 0;
         for (Cell cell: this.hand)
+            if (cell.hasCard())
+                cnt++;
+        return cnt;
+    }
+
+    public int countOfCardsInMonsters () {
+        int cnt = 0;
+        for (Cell cell: this.monsterCells)
+            if (cell.hasCard())
+                cnt++;
+        return cnt;
+    }
+
+    public int countOfCardsInSpells () {
+        int cnt = 0;
+        for (Cell cell: this.spellCells)
             if (cell.hasCard())
                 cnt++;
         return cnt;

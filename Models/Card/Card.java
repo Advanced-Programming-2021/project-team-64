@@ -121,6 +121,14 @@ public class Card implements Comparable<Card> {
         return attack;
     }
 
+    public int getAttack1() {
+        return this.attack;
+    }
+
+    public Integer getDefence() {
+        return defence;
+    }
+
     public void ability (Board myBoard, Board enemyBoard) {
         if (this.checkName("Monster Reborn"))
             Ability.MonsterReborn();
@@ -170,5 +178,9 @@ public class Card implements Comparable<Card> {
     public void afterTurnUpAbility (Cell me, GameBoard gameboard) {
         if (this.checkName("Man-Eater Bug"))
             TurnUpAbility.Man_Eater_Bug();
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

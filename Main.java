@@ -27,7 +27,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        CardSystem.importFromCsv();
+        // CardSystem.importFromCsv();
+        importFromDatabase();
 
         exportToDatabase();
     }

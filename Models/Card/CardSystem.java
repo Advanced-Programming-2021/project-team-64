@@ -31,7 +31,6 @@ public class CardSystem extends Model {
 
         for (int i = 1; i < csv.size(); i++) {
             ArrayList<String> row = csv.get(i);
-            System.out.println(new Gson().toJson(row));
             Cards.add(new Card(
                     row.get(0),
                     row.get(2),
@@ -53,7 +52,6 @@ public class CardSystem extends Model {
 
         for (int i = 1; i < csv.size(); i++) {
             ArrayList<String> row = csv.get(i);
-            System.out.println(new Gson().toJson(row));
             Cards.add(new Card(
                     row.get(0),
                     "",

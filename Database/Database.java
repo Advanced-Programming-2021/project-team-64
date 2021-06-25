@@ -46,11 +46,10 @@ public class Database {
         ArrayList<ArrayList<String>> res = new ArrayList<>();
         for (String row: rows)
             res.add(splitString(row, ','));
-        System.out.println(new Gson().toJson(res));
         return res;
     }
 
-    static public void writeToFile (String filePath, String data) {
+    static public void writeToFile (String filePath, String data) throws IOException {
         File file = new File(filePath);
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(data);

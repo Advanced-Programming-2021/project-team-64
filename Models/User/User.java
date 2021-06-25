@@ -22,7 +22,7 @@ public class User extends Model {
     private String nickname;
     private Integer score, money;
 
-    static public void exportToFile () {
+    static public void exportToFile () throws IOException {
         Database.writeToFile(filePath, new Gson().toJson(Users));
     }
 
