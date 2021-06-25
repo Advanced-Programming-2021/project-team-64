@@ -24,12 +24,12 @@ public class Card implements Comparable<Card> {
     private Integer defence = 0;
 
     @Override
-    public String toString() {
+    public String toString () {
         return (new Gson()).toJson(this);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals (Object o) {
         if (o == this)
             return true;
         if (!(o instanceof Card))
@@ -40,8 +40,20 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode () {
         return (new Gson()).toJson(this).hashCode();
+    }
+
+    public boolean isMonster () {
+        return this.checkMainType("Monster");
+    }
+
+    public boolean isSpell () {
+        return this.checkMainType("Spell");
+    }
+
+    public boolean isTrap () {
+        return this.checkMainType("Trap");
     }
 
     public boolean checkName (String cardName) {
