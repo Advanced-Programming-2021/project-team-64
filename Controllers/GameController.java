@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.Card.Card;
+import Models.Card.CardSystem;
 import Models.Game.Board;
 import Models.Game.Cell;
 import Models.Game.GameBoard;
@@ -143,6 +144,10 @@ public class GameController extends MenuController {
                 while(phase != 4 && battlePhaseAction()) {
                     System.out.println("action not allowed in this phase");
                     getInput();
+                }
+
+                if(recognizeCheat() == 1) {
+                    return;
                 }
 
                 recognizeSelect(playerNum);
@@ -333,6 +338,9 @@ public class GameController extends MenuController {
                             getInput();
                         }
 
+                        if(recognizeCheat() == 1) {
+                            return;
+                        }
 
                         recognizeSelect(playerNum);
                         recognizeCardShow();
@@ -616,6 +624,40 @@ public class GameController extends MenuController {
 
     private static boolean battlePhaseAction() {
         return checkWord("attack", input);
+    }
+
+    private static int recognizeCheat() {
+        String tmp = "";
+        if(checkWord("increase --money", input)) {
+            tmp = getNames("increase --money", input);
+            int x = Integer.parseInt(tmp);
+            gameBoard.boards[playerNum].user.increaseMoney(x);
+        }
+        else if(checkWord("select --hand ", input)) {
+            tmp = getNames("select --hand", input);
+            StringBuilder card = new StringBuilder();
+            String[] s = tmp.split(" ");
+            for (String s1 : s) {
+                if(!s1.equals("--force")) {
+                    card.append(s1);
+                }
+            }
+            if(stringExists(tmp, "--force")) {
+                selectedCard = CardSystem.getCard(card.toString());
+            }
+        }
+        else if(checkWord("increase --LP", input)) {
+            tmp = getNames("increase --LP", input);
+            int x = Integer.parseInt(tmp);
+            gameBoard.boards[playerNum].lifePoint += x;
+        }
+        else if(checkWord("duel set winner", input)) {
+            tmp = getNames("duel set winner", input);
+            String nickname = tmp;
+            System.out.println(User.getByNickname(nickname).getUsername() + "won the whole match with score: " + gameBoard.boards[playerNum].lifePoint + " - " + gameBoard.boards[1 - playerNum].lifePoint);
+            return 1;
+        }
+        return 0;
     }
 
     public static void recognizeGameInputsP2A(User player) {
