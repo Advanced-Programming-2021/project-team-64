@@ -189,4 +189,14 @@ public class User extends Model {
     public boolean activeDeckIsValid () {
         return (this.activeDeck != null && this.activeDeck.isValid());
     }
+
+    public void showAllDecks () {
+        System.out.print("Decks:\nActive deck:\n");
+        if (hasActiveDeck())
+            this.activeDeck.showShortData();
+        System.out.println("Other decks:");
+        for (Deck deck: decks)
+            if (deck != activeDeck)
+                deck.showShortData();
+    }
 }
