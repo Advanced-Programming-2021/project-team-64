@@ -51,8 +51,26 @@ public class CardSystem extends Model {
         }
     }
 
-    static private void importFromSpellTrapCsvFile () {
+    static private void importFromSpellTrapCsvFile () throws IOException {
+        ArrayList<ArrayList<String>> csv = Database.csvToArrayList(spellTrapCsvFilePath);
 
+        for (int i = 1; i < csv.size(); i++) {
+            ArrayList<String> row = csv.get(i);
+            System.out.println(new Gson().toJson(row));
+            Cards.add(new Card(
+                    row.get(0),
+                    "",
+                    row.get(1),
+                    row.get(2),
+                    row.get(2),
+                    row.get(3),
+                    row.get(4),
+                    Integer.parseInt(row.get(5)),
+                    1,
+                    0,
+                    0
+            ));
+        }
     }
 
     static public void importFromCsv () throws IOException {
