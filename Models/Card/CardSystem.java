@@ -1,13 +1,64 @@
 package Models.Card;
 
+import Database.Database;
 import Models.Model;
+import com.google.gson.Gson;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class CardSystem extends Model {
+    static String filePath = "Database/card-system.txt";
+    static String monstersCsvFilePath = "Database/Monster.csv";
+    static String spellTrapCsvFilePath = "Database/SpellTrap.csv";
     static public ArrayList<Card> Cards = new ArrayList<>();
+
+    static public void exportToFile () throws IOException {
+        File file = new File(filePath);
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(new Gson().toJson(Cards));
+        fileWriter.close();
+    }
+
+    static public void importFromFile () throws IOException {
+        Cards = new Gson().fromJson(Database.fileToString(filePath), Cards.getClass());
+    }
+
+    static private void importFromMonsterCsvFile () throws IOException {
+        ArrayList<ArrayList<String>> csv = Database.csvToArrayList(monstersCsvFilePath);
+
+        for (int i = 1; i < csv.size(); i++) {
+            ArrayList<String> row = csv.get(i);
+            System.out.println(new Gson().toJson(row));
+            Cards.add(new Card(
+                    row.get(0),
+                    row.get(2),
+                    "Monster",
+                    row.get(3),
+                    row.get(4),
+                    row.get(7),
+                    "",
+                    Integer.parseInt(row.get(8)),
+                    Integer.parseInt(row.get(1)),
+                    Integer.parseInt(row.get(5)),
+                    Integer.parseInt(row.get(6))
+            ));
+        }
+    }
+
+    static private void importFromSpellTrapCsvFile () {
+
+    }
+
+    static public void importFromCsv () throws IOException {
+        importFromMonsterCsvFile();
+        importFromSpellTrapCsvFile();
+    }
 
     static public Card getCardCopy (String cardName) {
         for (Card card: Cards)
@@ -15,6 +66,7 @@ public class CardSystem extends Model {
                 return card;
         return null;
     }
+
 
     static public Card getCard (String cardName) {
         for (int i = 0; i < Cards.size(); i++)

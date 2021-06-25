@@ -153,13 +153,13 @@ public class GameController extends MenuController {
     }
 
     private static void recognizeCardShow() {
-        if(checkWord("card show --selected")) {
+        if(checkWord("card show --selected", ".")) {
 
         }
     }
 
     private static void recognizeShowGraveYard() {
-        if(checkWord("show graveyard")) {
+        if(checkWord("show graveyard", ".")) {
             
         }
     }

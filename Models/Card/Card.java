@@ -16,10 +16,11 @@ public class Card implements Comparable<Card> {
     private String attribute = "";
     private String mainType = "";
     private String type = "";
+    private String cardType = "";
     private String description = "";
+    private String status = "";
     private Integer cost = 0;
     private Integer level = 0;
-    private Integer cardNumber = 0;
     private Integer attack = 0;
     private Integer defence = 0;
 
@@ -42,6 +43,20 @@ public class Card implements Comparable<Card> {
     @Override
     public int hashCode () {
         return (new Gson()).toJson(this).hashCode();
+    }
+
+    public Card(String name, String attribute, String mainType, String type, String cardType, String description, String status, Integer cost, Integer level, Integer attack, Integer defence) {
+        this.name = name;
+        this.attribute = attribute;
+        this.mainType = mainType;
+        this.type = type;
+        this.cardType = cardType;
+        this.description = description;
+        this.status = status;
+        this.cost = cost;
+        this.level = level;
+        this.attack = attack;
+        this.defence = defence;
     }
 
     public boolean isMonster () {
